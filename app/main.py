@@ -3,9 +3,9 @@ from fastapi import FastAPI
 from app.core.database import connect_db
 from app.core.database import disconnect_db
 
-from app.modules.users.router import router as users_router
-# from app.modules.auth.router import router as auth_router
 
+# include routers from each module below
+from app.modules.healthcheck.router import router as healthcheck_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -23,4 +23,4 @@ app = FastAPI(
 )
 
 # app.include_router(auth_router)
-app.include_router(users_router)
+app.include_router(healthcheck_router)
